@@ -1,15 +1,20 @@
 ## Step 01.1: Part 1 Basic Spring Boot Web Application Setup
 
-Basically we use Spring initializr to initialize to bootstrap our application. 
-https://start.spring.io/
+What You Will Learn during this Step:
 
-Select Maven project as the build tool.
-Select the version of Spring Boot.
-Group: com.imh.springboot.web. GroupId it's similar to the name that we assign a package on a Java class.
-Artifact:01-spring-boot-web-application. ArtifactId it's similar to the name that we assign a class on Java, but here it's the name of the application that we are creating.
-Dependencies: Web, DevTools. All of them are starters that contains all the dependencies that are needed to develop a application: Web contains Spring MVC.
+- Create a simple web application using Spring Boot
+- Run the Spring Boot Application
 
-Generate project and extract the zip file to a folder content. Later, launch up an eclipse workspace and import the project that we have downloaded.  
+Basically we use [Spring initializr](https://start.spring.io/) to initialize to bootstrap our application. 
+
+*Project*: Select Maven project as the build tool.
+*Spring Boot*: Always try to select the version of Spring Boot that not contains the words (SNAPSHOT); this is the stable version.
+*Project Metada*
+*Group*: com.imh.springboot.web. GroupId it's similar to the name that we assign a package on a Java class.
+*Artifact*:spring-boot-web-application. ArtifactId it's similar to the name that we assign a class on Java, but here it's the name of the application that we are creating.
+*Dependencies*: Web, DevTools. All of them are starters that contain all the dependencies that are needed to develop an application: Web contains Spring MVC.
+
+Generate project and extract the zip file to a folder content. Later, launch up an eclipse workspace and import the project that we have downloaded.
 
 ## Complete Code Example
 
@@ -73,6 +78,10 @@ Generate project and extract the zip file to a folder content. Later, launch up 
 	</build>
 
 </project>
+```
+
+##### /src/main/resources/application.properties
+```
 ```
 
 ##### /src/main/java/com/imh/springboot/web/SpringBootWebApplication.java
