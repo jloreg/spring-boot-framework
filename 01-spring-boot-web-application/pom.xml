@@ -43,6 +43,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- To enable .jsp support in embedded Tomcat server! -->
+		<dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 
 	@RequestMapping("/login")
-	@ResponseBody
+//	@ResponseBody	//Not necessary when we add a file (.jsp, .html, .json), to be send as response
 	public String loginMessage(){
-		return "Hello World";
+		return "login";
 	}
 }
