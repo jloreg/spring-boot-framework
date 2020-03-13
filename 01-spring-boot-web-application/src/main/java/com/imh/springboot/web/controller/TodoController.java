@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.imh.springboot.web.model.Todo;
 import com.imh.springboot.web.service.TodoService;
 
 @Controller
@@ -26,16 +27,18 @@ public class TodoController {
 		return "list-todos";
 	}
 	
-	@RequestMapping(value="/add-todo", method = RequestMethod.GET)
+	@RequestMapping(value="/add-todo", method = RequestMethod.GET)	//Added: process the "Add a Todo" GET Request from list-todos.	
 	public String showAddTodoPage(ModelMap model){
+		//model.addAttribute("todo",value);
+		model.addAttribute("todo", new Todo(0,(String) model.get("name"), "",
+				new Date(), false));
 		return "todo";
 	}
 	
 	@RequestMapping(value="/add-todo", method = RequestMethod.POST)
-	public String addTodo(ModelMap model, @RequestParam String desc){
-		
+	public String addTodo(ModelMap model, Todo todo){
 		//Redirect to the list-todos to put the list of Todos in the model.
-		service.addTodo((String) model.get("name"), desc, new Date(), false);
+		service.addTodo((String) model.get("name"), todo.getDesc(), new Date(), false);
 		return "redirect:/list-todos";
 	}
 	
