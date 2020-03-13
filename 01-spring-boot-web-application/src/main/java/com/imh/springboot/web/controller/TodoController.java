@@ -2,9 +2,12 @@ package com.imh.springboot.web.controller;
 
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -27,7 +30,7 @@ public class TodoController {
 		return "list-todos";
 	}
 	
-	@RequestMapping(value="/add-todo", method = RequestMethod.GET)	//Added: process the "Add a Todo" GET Request from list-todos.	
+	@RequestMapping(value="/add-todo", method = RequestMethod.GET)
 	public String showAddTodoPage(ModelMap model){
 		//model.addAttribute("todo",value);
 		model.addAttribute("todo", new Todo(0,(String) model.get("name"), "",
@@ -36,8 +39,10 @@ public class TodoController {
 	}
 	
 	@RequestMapping(value="/add-todo", method = RequestMethod.POST)
-	public String addTodo(ModelMap model, Todo todo){
-		//Redirect to the list-todos to put the list of Todos in the model.
+	public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result){	
+		if (result.hasErrors()) {	//Added: if there are errors, the user gets redirected to the todo.jsp page.
+			return "todo";
+		}
 		service.addTodo((String) model.get("name"), todo.getDesc(), new Date(), false);
 		return "redirect:/list-todos";
 	}
