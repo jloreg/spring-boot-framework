@@ -1,13 +1,17 @@
 package com.imh.springboot.web.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -22,6 +26,13 @@ public class TodoController {
 	
 	@Autowired
 	TodoService service;
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {							//Added
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, false));
+	}
 
 	@RequestMapping(value="/list-todos", method = RequestMethod.GET)
 	public String showTodos(ModelMap model){
@@ -40,10 +51,10 @@ public class TodoController {
 	
 	@RequestMapping(value="/add-todo", method = RequestMethod.POST)
 	public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result){	
-		if (result.hasErrors()) {	//Added: if there are errors, the user gets redirected to the todo.jsp page.
+		if (result.hasErrors()) {
 			return "todo";
 		}
-		service.addTodo((String) model.get("name"), todo.getDesc(), new Date(), false);
+		service.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);		//Added. Modified new Date() by todo.getTargetDate()
 		return "redirect:/list-todos";
 	}
 	
@@ -54,14 +65,14 @@ public class TodoController {
 	}
 	
 	@RequestMapping(value="/update-todo", method = RequestMethod.GET)
-	public String showUpdateTodoPage(@RequestParam int id, ModelMap model){				//Added
+	public String showUpdateTodoPage(@RequestParam int id, ModelMap model){
 		Todo todo = service.retrieveTodo(id);
 		model.put("todo", todo);
 		return "todo";
 	}
 	
 	@RequestMapping(value="/update-todo", method = RequestMethod.POST)
-	public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result){	//Added
+	public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result){
 		
 		//Validation
 		if (result.hasErrors()) {
