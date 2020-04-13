@@ -1,3 +1,63 @@
+## Step 22: Preparing for Spring Security
+
+- Prepare for Using Spring Security
+- Remove All the Login Related Functionality
+- Make Welcome the default page - with some hardcoding to start with.
+- Refactor getLoggedInUserName
+- Update Home Page Link in navigation
+
+## Complete Code Example
+
+##### /src/main/webapp/WEB-INF/jsp/common/navigation.jspf
+
+```xml
+<nav role="navigation" class="navbar navbar-default">
+	<div class="">
+		<a href="http://www.imh.com" class="navbar-brand">Imh</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="/">Home</a></li>
+			<li><a href="/list-todos">Todos</a></li>
+		</ul>
+	</div>
+</nav>
+```
+
+##### /src/main/java/com/imh/springboot/web/controller/LoginController.java
+
+```java
+package com.imh.springboot.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.imh.springboot.web.service.LoginService;
+
+@Controller
+@SessionAttributes("name")
+public class LoginController {
+	
+	@Autowired
+	LoginService service;
+	
+	@RequestMapping(value="/", method = RequestMethod.GET)			//Added: value="/login" by value="/"
+	public String showLoginPage(ModelMap model){
+		model.put("name", "imh");									//Added
+		return "login";
+	}
+	
+}
+```
+
+##### /src/main/java/com/imh/springboot/web/controller/TodoController.java
+
+```
 package com.imh.springboot.web.controller;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +94,7 @@ public class TodoController {
 				dateFormat, false));
 	}
 
-	private String getLoggedInUserName(ModelMap model) {
+	private String getLoggedInUserName(ModelMap model) {							//Added
 		String name = (String) model.get("name");
 		return name;
 	}
@@ -59,7 +119,7 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "todo";
 		}
-		service.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);
+		service.addTodo((String) model.get("name"), todo.getDesc(), todo.getTargetDate(), false);		
 		return "redirect:/list-todos";
 	}
 	
@@ -89,5 +149,5 @@ public class TodoController {
 		service.updateTodo(todo);
 		return "redirect:/list-todos";
 	}
-
 }
+```
