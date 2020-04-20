@@ -16,7 +16,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.imh.springboot.web.model.Todo;
@@ -72,6 +71,10 @@ public class TodoController {
 	
 	@RequestMapping(value="/delete-todo", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id){
+		
+		if (id == 1) {
+			throw new RuntimeException("Something went wrong");
+		}
 		service.deleteTodo(id);
 		return "redirect:/list-todos";
 	}
