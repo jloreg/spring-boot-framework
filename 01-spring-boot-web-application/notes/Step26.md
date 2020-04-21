@@ -1,3 +1,20 @@
+# Section Introduction - Connecting Web Application with JPA
+
+We would update our SpringBoot web application to connect to the database, we upgrade our web application to use JPA and define entities for Todo, and also we'll create a Todo repository and connect to the in-memory H2 database.
+
+## Step 26: Adding Dependencies for JPA and H2
+
+In this step we'll upgrade our application to add the dependencies that are needed to be able to develop a JPA project and connect him to the in-memory H2 database.
+
+**Resume**
+
+In this step, we quickly add in the dependencies that are needed for JPA. There is a level of configuration that we would need to make before we would be able to make use of the dependencies that we have added in this small step.
+
+## Complete Code Example
+
+##### pom.xml
+
+``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -47,11 +64,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<dependency>							<!-- Added -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>							<!-- Added -->
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -99,3 +116,4 @@
 	</build>
 
 </project>
+```
