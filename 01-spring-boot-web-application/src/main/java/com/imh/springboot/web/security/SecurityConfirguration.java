@@ -11,8 +11,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 @Configuration
 public class SecurityConfirguration extends WebSecurityConfigurerAdapter {
 
-	//Added to solve the issue: java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
-	//https://stackoverflow.com/questions/49654143/spring-security-5-there-is-no-passwordencoder-mapped-for-the-id-null
 	@SuppressWarnings("deprecation")
 	@Bean
 	public static NoOpPasswordEncoder passwordEncoder() {
@@ -28,9 +26,12 @@ public class SecurityConfirguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login").permitAll()
+		http.authorizeRequests().antMatchers("/login", "/h2-console/**").permitAll()
 				.antMatchers("/", "/*todo*/**").access("hasRole('USER')").and()
 				.formLogin();
-	}
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
+	} 
 
 }
