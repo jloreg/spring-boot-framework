@@ -8,9 +8,10 @@ import com.imh.springboot.web.model.Todo;
 
 public interface TodoRepository extends JpaRepository <Todo, Integer> {
 	
+	//This method service.retrieveTodos(name) is not provided by the TodoRepository; it's not necessary to implement
 	List <Todo> findByUser(String user);
-	//service.retrieveTodos(name);
-	
+
+	//Provided by default by the TodoRepository; it's not necessary to implement
 	//service.deleteTodo(id);
 	//service.retrieveTodo(id);
 	//service.updateTodo(todo);

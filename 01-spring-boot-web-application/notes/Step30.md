@@ -1,3 +1,29 @@
+## Step 30: Update, Delete and Retrieve Todos using JPA Repository
+
+In the last step, we saw that we were able to insert a row into the database. However, the flow from the database is not being shown on the screen because we have not really updated any of the retrieve or the update methods. In this step, let's complete that task of connecting the entire application to the backend.
+
+``` java
+@Controller
+public class TodoController {
+
+	//@Autowired				//To delete
+	//TodoService service;
+	
+	@Autowired
+	TodoRepository repository;
+
+```
+When you've updated the methods to use the database repository, you can login into the application, and you would see that there are no Todo's present in the application, this is due to the application is getting the data from the database. Let's now insert a Todo in the application through localhost:8080/add-todo page, and you'll see that there is a date which is inserted into the database.
+
+**Resume**
+
+In this step we looked how to really talk to the database, and also makes sure that we are able to update, insert, delete, and retrieve the values of Todo's.
+
+## Complete Code Example
+
+##### /src/main/java/com/imh/springboot/web/controller/TodoController.java
+
+``` java
 package com.imh.springboot.web.controller;
 
 import java.text.SimpleDateFormat;
@@ -101,3 +127,28 @@ public class TodoController {
 	}
 
 }
+```
+
+##### /src/main/java/com/imh/springboot/web/service/TodoRepository.java
+
+``` java
+package com.imh.springboot.web.service;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.imh.springboot.web.model.Todo;
+
+public interface TodoRepository extends JpaRepository <Todo, Integer> {
+	
+	//This method service.retrieveTodos(name) is not provided by the TodoRepository; it's not necessary to implement
+	List <Todo> findByUser(String user);
+
+	//Provided by default by the TodoRepository; it's not necessary to implement
+	//service.deleteTodo(id);
+	//service.retrieveTodo(id);
+	//service.updateTodo(todo);
+	//service.addTodo(getLoggedInUserName(model), todo.getDesc(), todo.getTargetDate(), false);
+}
+```
