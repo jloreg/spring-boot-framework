@@ -2,23 +2,35 @@ package com.imh.springboot.web.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Type;
+
 @Entity
+@Table(name = "TODO_TABLE")
 public class Todo {
 	
+	@Column(name = "TODO_ID", nullable = false)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+	@Column(name = "TODO_USER", length = 255)
     private String user;
+	@Column(name = "TODO_DESC", length = 255)
     @Size(min=10, message="Enter at least 10 Characters...")
     private String desc;
+	@Column(name = "TODO_TARGETDATE")
     private Date targetDate;
-    private boolean isDone;
-
+	@Column(name = "TODO_ISDONE", nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean isDone;
+	
     public Todo() {
 		super();
 	}
