@@ -1,3 +1,50 @@
+## Step 33: Upgrading to Spring Boot 2 and Spring 5
+
+You'll need the next resources to upgrade to the latest version:
+
+- https://start.spring.io/
+- https://spring.io/projects/spring-boot#learn
+- https://www.baeldung.com/spring-maven-repository
+- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+
+When we looked at the web page start.spring.io, the latest version of the Spring Initializr was 2.2.6, this is the latest milestone release for Spring Boot.  In this step, what we'll do is upgrade our project from 2.3.5 to 2.3.6 version, which will mean that we are using the latest version of Spring Framework.
+
+##### pom.xml
+
+```xml
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+```
+
+We add the repository where is located the new releases and upgrade our project to the version 2.2.6 of Spring Boot.
+
+```xml
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<!-- Repository of Spring Boot releases -->
+	<repositories>	
+    		<repository> 
+        		<id>repository.spring.release</id> 
+        		<name>Spring GA Repository</name> 
+        		<url>http://repo.spring.io/release</url> 
+	    	</repository>
+	</repositories>
+```
+
+## Complete Code Example
+
+##### pom.xml
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -78,7 +125,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-		
+		WelcomeController
 		<!-- To enable Bootsrap & JQuery -->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -106,8 +153,8 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!-- To add the new release of Spring Boot-->
+	
+	<!-- Repository of Spring Boot releases -->
 	<repositories>	
     	<repository> 
         	<id>repository.spring.release</id> 
@@ -117,3 +164,4 @@
 	</repositories>
 
 </project>
+```
