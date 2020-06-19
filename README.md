@@ -68,6 +68,32 @@ You will learn about:
 - Step 24: Refactor and add Logout Functionality using Spring Security
 - Step 25: Exception Handling
 
+## Introduction to JPA
+
+- 0000 - 06 - Section Introduction - Introduction to JPA with Spring Boot in 10 Steps
+- Step 01 : Object Relational Impedence Mismatch - Understanding the problem that JPA solves
+- Step 02 : World before JPA - JDBC, Spring JDBC and myBatis
+- Step 03 : Introduction to JPA
+- Step 04 : Creating a JPA Project using Spring Initializr
+- Step 05 : Defining a JPA Entity - User
+- Step 06 : Defining a Service to manage the Entity - UserService and EntityManager
+- Step 07 : Using a Command Line Runner to save the User to Database
+- Step 08 : Magic of Spring Boot and In Memory Database H2
+- Step 09 : Introduction to Spring Data JPA
+- Step 10 : More JPA Repository : findById and findAll
+
+## Connecting Web Application with JPA
+
+- 0000 - 07 - Section Introduction - Connecting Web Application with JPA
+- Step 26: Adding Dependencies for JPA and H2
+- Step 27: Configuring H2 Console
+- Step 28: Create Todo Entity and JPA Repository
+- Step 29: Insert Todo using JPA Repository
+- Step 30: Update, Delete and Retrieve Todos using JPA Repository
+- Step 31: Data initialization with data.sql
+- Step 31: Connecting JPA to other databases
+- Step 33: Upgrading to Spring Boot 2 and Spring 5
+
 ## Spring Boot Deep Dive with a simple API
 
 - 0000 - 05 - Section Introduction - Spring Boot Deep Dive with a simple API
@@ -104,29 +130,3 @@ You will learn about:
 - Step 27.1: Configure Spring Security user roles for survey and other services Part 1
 - Step 27.2: Configure Spring Security user roles Part 2
 - Step 28: A Deep Dive into Spring Boot Auto Configuration
-
-## Introduction to JPA
-
-- 0000 - 06 - Section Introduction - Introduction to JPA with Spring Boot in 10 Steps
-- Step 01 : Object Relational Impedence Mismatch - Understanding the problem that JPA solves
-- Step 02 : World before JPA - JDBC, Spring JDBC and myBatis
-- Step 03 : Introduction to JPA
-- Step 04 : Creating a JPA Project using Spring Initializr
-- Step 05 : Defining a JPA Entity - User
-- Step 06 : Defining a Service to manage the Entity - UserService and EntityManager
-- Step 07 : Using a Command Line Runner to save the User to Database
-- Step 08 : Magic of Spring Boot and In Memory Database H2
-- Step 09 : Introduction to Spring Data JPA
-- Step 10 : More JPA Repository : findById and findAll
-
-## Connecting Web Application with JPA
-
-- 0000 - 07 - Section Introduction - Connecting Web Application with JPA
-- Step 01: Adding Dependencies for JPA and H2
-- Step 02: Configuring H2 Console
-- Step 03: Create Todo Entity and JPA Repository
-- Step 04: Insert Todo using JPA Repository
-- Step 05: Update, Delete and Retrieve Todos using JPA Repository
-- Step 06: Data initialization with data.sql
-- Step 07: Connecting JPA to other databases
-- Step 08: Upgrading to Spring Boot 2 and Spring 5

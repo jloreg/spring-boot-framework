@@ -29,3 +29,15 @@
 - Step 23: Initial Spring Security Setup
 - Step 24: Refactor and add Logout Functionality using Spring Security
 - Step 25: Exception Handling
+
+After Completing "000-06-Section Introduction - Introduction to JPA with Spring Boot in 10 Steps"
+
+- 0000 - 07 - Section Introduction - Connecting Web Application with JPA
+- Step 26: Adding Dependencies for JPA and H2
+- Step 27: Configuring H2 Console
+- Step 28: Create Todo Entity and JPA Repository
+- Step 29: Insert Todo using JPA Repository
+- Step 30: Update, Delete and Retrieve Todos using JPA Repository
+- Step 31: Data initialization with data.sql
+- Step 31: Connecting JPA to other databases
+- Step 33: Upgrading to Spring Boot 2 and Spring 5
